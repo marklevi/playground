@@ -13,4 +13,12 @@ public class InStack implements StackInterface {
     public Integer pop() {
         return (Integer) stack.pop();
     }
+
+    public Integer getSize() {
+        return stack.size();
+    }
+
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
 }

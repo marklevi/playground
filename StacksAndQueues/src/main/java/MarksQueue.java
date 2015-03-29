@@ -15,6 +15,23 @@ public class MarksQueue implements Queue {
 
     @Override
     public int dequeue() {
+        if(outStack.isEmpty()){
+            popAllElementsInInStack();
+        }
         return outStack.pop();
+    }
+
+    private void popAllElementsInInStack() {
+        while(!inStack.isEmpty()){
+            outStack.push(inStack.pop());
+        }
+    }
+
+    public Integer getInStackSize() {
+        return inStack.getSize();
+    }
+
+    public Integer getOutStackSize() {
+        return outStack.getSize();
     }
 }
