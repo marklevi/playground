@@ -1,14 +1,26 @@
+import exceptions.NoElementInTheQueueException;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class MarksQueueTest {
 
+    private MarksQueue marksQueue;
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
+    @Before
+    public void setUp() throws Exception {
+        marksQueue = new MarksQueue(new InStack(), new OutStack());
+    }
+
     @Test
     public void ShouldDequeueTheFirstNumberThatWasEnqueued() throws Exception {
-        final MarksQueue marksQueue = new MarksQueue(new InStack(), new OutStack());
-
         marksQueue.enqueue(0);
         marksQueue.enqueue(1);
         marksQueue.enqueue(2);
@@ -20,8 +32,6 @@ public class MarksQueueTest {
 
     @Test
     public void ShouldReturnAppropriateSizesOfStacks() throws Exception {
-        final MarksQueue marksQueue = new MarksQueue(new InStack(), new OutStack());
-
         marksQueue.enqueue(0);
         marksQueue.enqueue(1);
         marksQueue.enqueue(2);
@@ -32,8 +42,6 @@ public class MarksQueueTest {
 
     @Test
     public void ShouldFlushInStackElementsWhenDequeueIsCalledOnAnEmptyOutstack() throws Exception {
-        final MarksQueue marksQueue = new MarksQueue(new InStack(), new OutStack());
-
         marksQueue.enqueue(0);
         marksQueue.enqueue(1);
         marksQueue.enqueue(2);
@@ -44,5 +52,10 @@ public class MarksQueueTest {
         assertThat(marksQueue.getOutStackSize(), is(2));
     }
 
-    
+    @Test
+    public void ShouldThrowExceptionIfNoElementInTheQueue() throws Exception {
+        exception.expect(NoElementInTheQueueException.class);
+
+        marksQueue.dequeue();
+    }
 }

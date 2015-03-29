@@ -1,3 +1,7 @@
+import exceptions.NoElementInTheQueueException;
+
+import java.util.EmptyStackException;
+
 public class MarksQueue implements Queue {
 
     private final InStack inStack;
@@ -15,14 +19,18 @@ public class MarksQueue implements Queue {
 
     @Override
     public int dequeue() {
-        if(outStack.isEmpty()){
-            popAllElementsInInStack();
+        try {
+            if (outStack.isEmpty()) {
+                popAllElementsInInStack();
+            }
+            return outStack.pop();
+        } catch (EmptyStackException e) {
+            throw new NoElementInTheQueueException();
         }
-        return outStack.pop();
     }
 
     private void popAllElementsInInStack() {
-        while(!inStack.isEmpty()){
+        while (!inStack.isEmpty()) {
             outStack.push(inStack.pop());
         }
     }
