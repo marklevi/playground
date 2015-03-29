@@ -4,13 +4,8 @@ import java.util.EmptyStackException;
 
 public class MarksQueue implements Queue {
 
-    private final InStack inStack;
-    private final OutStack outStack;
-
-    public MarksQueue(InStack inStack, OutStack outStack) {
-        this.inStack = inStack;
-        this.outStack = outStack;
-    }
+    private StackInterface inStack = new StackImpl();
+    private StackInterface outStack = new StackImpl();
 
     @Override
     public void enqueue(Integer number) {

@@ -16,7 +16,7 @@ public class MarksQueueTest {
 
     @Before
     public void setUp() throws Exception {
-        marksQueue = new MarksQueue(new InStack(), new OutStack());
+        marksQueue = new MarksQueue();
     }
 
     @Test

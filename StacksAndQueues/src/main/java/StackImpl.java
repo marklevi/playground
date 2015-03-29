@@ -1,6 +1,7 @@
 import java.util.Stack;
 
-public class OutStack implements StackInterface {
+public class StackImpl implements StackInterface {
+
     private Stack stack = new Stack();
 
     @Override
