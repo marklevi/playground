@@ -1,11 +1,9 @@
 import exceptions.NoElementInTheQueueException;
 
-import java.util.EmptyStackException;
-
 public class MarksQueue implements Queue {
 
-    private StackInterface inStack = new StackImpl();
-    private StackInterface outStack = new StackImpl();
+    private StackImpl inStack = new StackImpl();
+    private StackImpl outStack = new StackImpl();
 
     @Override
     public void enqueue(Integer number) {
@@ -19,7 +17,7 @@ public class MarksQueue implements Queue {
                 popAllElementsInInStack();
             }
             return outStack.pop();
-        } catch (EmptyStackException e) {
+        } catch (IndexOutOfBoundsException e) {
             throw new NoElementInTheQueueException();
         }
     }

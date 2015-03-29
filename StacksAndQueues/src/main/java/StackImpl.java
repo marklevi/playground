@@ -1,17 +1,17 @@
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class StackImpl implements StackInterface {
 
-    private Stack stack = new Stack();
+    private ArrayList<Integer> stack = new ArrayList<Integer>();
 
     @Override
     public void push(Integer number) {
-        stack.push(number);
+        stack.add(number);
     }
 
     @Override
     public Integer pop() {
-        return (Integer) stack.pop();
+        return stack.remove(stack.size() - 1);
     }
 
     public Integer getSize() {
