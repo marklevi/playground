@@ -1,0 +1,8 @@
+rawr/todo
+*.swp
+*~
+*.pyc
+.DS_Store
+*.idea
+*.iml
+out/
