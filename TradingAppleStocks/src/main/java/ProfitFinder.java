@@ -5,21 +5,16 @@ public class ProfitFinder {
     public Integer getMaxProfit(List<Integer> stockPricesYesterday) {
         int maxProfit = 0;
 
-        for (int i = 0; i < stockPricesYesterday.size(); i++) {
-
-            for (int j = 0; j < stockPricesYesterday.size(); j++){
-                int minBuyTime = Math.min(i, j);
-                int maxBuyTime = Math.max(i, j);
-
-                final Integer earlierPrice = stockPricesYesterday.get(minBuyTime);
-                final Integer laterPrice = stockPricesYesterday.get(maxBuyTime);
+        int earlierTime = 0;
+        for (Integer earlierPrice : stockPricesYesterday) {
+            for (Integer laterPrice : stockPricesYesterday.subList(earlierTime, stockPricesYesterday.size())) {
 
                 int potentialProfit = laterPrice - earlierPrice;
 
-                if(potentialProfit > maxProfit){
-                    maxProfit = potentialProfit;
-                }
+                maxProfit = Math.max(potentialProfit, maxProfit);
+
             }
+            earlierTime++;
         }
         return maxProfit;
     }

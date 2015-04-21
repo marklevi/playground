@@ -15,7 +15,6 @@ public class ProfitFinderTest {
         stockPricesYesterday.add(550);
         stockPricesYesterday.add(530);
 
-        System.out.println(stockPricesYesterday.get(0));
         final ProfitFinder profitFinder = new ProfitFinder();
         final Integer maxProfit = profitFinder.getMaxProfit(stockPricesYesterday);
 
