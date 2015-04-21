@@ -3,19 +3,19 @@ import java.util.List;
 public class ProfitFinder {
 
     public Integer getMaxProfit(List<Integer> stockPricesYesterday) {
-        int maxProfit = 0;
+        int minPrice = stockPricesYesterday.get(0);
+        int maxProfit = getPotentialProfit(stockPricesYesterday.get(0), stockPricesYesterday.get(1));
 
-        int earlierTime = 0;
-        for (Integer earlierPrice : stockPricesYesterday) {
-            for (Integer laterPrice : stockPricesYesterday.subList(earlierTime, stockPricesYesterday.size())) {
+        for (Integer currentPrice : stockPricesYesterday.subList(1, stockPricesYesterday.size())) {
 
-                int potentialProfit = laterPrice - earlierPrice;
+            maxProfit = Math.max(getPotentialProfit(minPrice, currentPrice), maxProfit);
 
-                maxProfit = Math.max(potentialProfit, maxProfit);
-
-            }
-            earlierTime++;
+            minPrice = Math.min(currentPrice, minPrice);
         }
         return maxProfit;
+    }
+
+    private int getPotentialProfit(int minPrice, Integer currentPrice) {
+        return currentPrice - minPrice;
     }
 }

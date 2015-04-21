@@ -34,4 +34,18 @@ public class ProfitFinderTest {
 
         assertThat(maxProfit, is(10));
     }
+
+    @Test
+    public void FindProfitGivenStockGoesDownAllDay() throws Exception {
+        List<Integer> stockPricesYesterday = new ArrayList<Integer>();
+        stockPricesYesterday.add(550);
+        stockPricesYesterday.add(520);
+        stockPricesYesterday.add(500);
+        stockPricesYesterday.add(450);
+
+        final ProfitFinder profitFinder = new ProfitFinder();
+        final Integer maxProfit = profitFinder.getMaxProfit(stockPricesYesterday);
+
+        assertThat(maxProfit, is(-20));
+    }
 }
