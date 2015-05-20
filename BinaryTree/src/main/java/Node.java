@@ -1,16 +1,12 @@
 public class Node {
-    private Integer data;
+    public Integer value;
     public Node left;
     public Node right;
 
-    public Node(Integer data) {
-        this.data = data;
+    public Node(Integer value) {
+        this.value = value;
         this.left = null;
         this.right = null;
-    }
-
-    public Integer getData() {
-        return data;
     }
 
 }

@@ -30,17 +30,17 @@ public class BinaryTreeTest {
         final Node root = binaryTree.getRoot();
         binaryTree.printTree(root);
 
-        assertThat(root.getData(), is(5));
+        assertThat(root.value, is(5));
 
         Node rootLeft = root.left;
-        assertThat(rootLeft.getData(), is(2));
-        assertThat(rootLeft.left.getData(), is(1));
-        assertThat(rootLeft.right.getData(), is(3));
+        assertThat(rootLeft.value, is(2));
+        assertThat(rootLeft.left.value, is(1));
+        assertThat(rootLeft.right.value, is(3));
 
         Node rootRight = root.right;
-        assertThat(rootRight.getData(), is(8));
-        assertThat(rootRight.left.getData(), is(7));
-        assertThat(rootRight.right.getData(), is(10));
+        assertThat(rootRight.value, is(8));
+        assertThat(rootRight.left.value, is(7));
+        assertThat(rootRight.right.value, is(10));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class BinaryTreeTest {
 
         Node root = binaryTree.getRoot();
 
-        boolean superBalanced = binaryTree.isSuperBalanced(root);
+        boolean superBalanced = new SuperBalancedChecker().isSuperBalanced(root);
         assertTrue(superBalanced);
 
     }
@@ -84,7 +84,9 @@ public class BinaryTreeTest {
 
         Node root = binaryTree.getRoot();
 
-        boolean superBalanced = binaryTree.isSuperBalanced(root);
+        boolean superBalanced = new SuperBalancedChecker().isSuperBalanced(root);
         assertFalse(superBalanced);
     }
+
+
 }
