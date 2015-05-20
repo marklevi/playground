@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BinaryTreeTest {
@@ -49,7 +50,41 @@ public class BinaryTreeTest {
         final Boolean bft = binaryTree.isBFT(root);
 
         assertTrue(bft);
+    }
+
+    @Test
+    public void shouldBeASuperBalancedTree() throws Exception {
+           // 5
+         //2    8
+       //1  3  7  10
+
+        Node root = binaryTree.getRoot();
+
+        boolean superBalanced = binaryTree.isSuperBalanced(root);
+        assertTrue(superBalanced);
+
+    }
+
+    @Test
+    public void shouldNotBeASuperBalancedTree() throws Exception {
+           // 5
+        //2    10
+     //1   4
+   //    3
+
+        BinaryTree binaryTree = new BinaryTree();
+
+        binaryTree.insert(5);
+        binaryTree.insert(2);
+        binaryTree.insert(1);
+        binaryTree.insert(4);
+        binaryTree.insert(3);
+        binaryTree.insert(10);
 
 
+        Node root = binaryTree.getRoot();
+
+        boolean superBalanced = binaryTree.isSuperBalanced(root);
+        assertFalse(superBalanced);
     }
 }
