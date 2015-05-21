@@ -10,7 +10,7 @@ public class FibonacciCalculatorTest {
 
         final FibonacciCalculator fibonacciCalculator = new FibonacciCalculator();
 
-        final Integer number = fibonacciCalculator.compute(6);
-        assertThat(number, is(8));
+        final Integer number = fibonacciCalculator.computeFib(4);
+        assertThat(number, is(3));
     }
 }
